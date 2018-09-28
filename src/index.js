@@ -1,15 +1,13 @@
-const fetch = require('node-fetch');
-
-const url = 'https://content.cygnus.com/wp-json/wp/v2/posts';
+require('./env');
+const wp = require('./wpapi');
 
 const { log } = console;
 
 const run = async () => {
-  const res = await fetch(url);
-  const data = await res.json();
-  log(data);
+  const res = await wp.posts();
+  log(res);
 };
 
-run().catch(e => setImmediate(() => {
+run().catch(e => setImmediate((e) => {
   throw e;
 }));
