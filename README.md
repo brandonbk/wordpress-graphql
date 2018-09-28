@@ -8,8 +8,10 @@ _Note:_ Requires YARN and Docker with compose.
 3. The GraphQL API is now available on `http://localhost:5987/graphql`
 
 ### Environment Variables
-```
+```sh
 API_URI=
+
+# required only for writes
 API_USERNAME=
 API_PASSWORD=
 ```
