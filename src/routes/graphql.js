@@ -4,7 +4,7 @@ const schema = require('../graphql/schema');
 
 const router = Router();
 
-const server = new ApolloServer({ schema, playground: false });
+const server = new ApolloServer({ schema, playground: { endpoint: '/graphql' } });
 server.applyMiddleware({ app: router, path: '/' });
 
 module.exports = router;

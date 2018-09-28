@@ -1,0 +1,29 @@
+type Query {
+  posts: PostConnection!
+}
+
+type PostConnection {
+  total_count: Int!
+  total_pages: Int!
+  nodes: [Post]
+}
+
+type Post {
+  id: Int!
+
+  title: String
+  content: String
+  date: Date
+  modified: Date
+  link: String
+  slug: String
+  status: String
+  type: String
+  password: String
+  excerpt: String
+  comment_status: String
+  ping_status: String
+  format: String
+  sticky: String
+  template: String
+}
