@@ -1,0 +1,29 @@
+version: '3'
+services:
+  app:
+    tty: true
+    image: node:8.11
+    ports:
+      - "${WORDPRESS_HTTP_PORT-5987}:${WORDPRESS_HTTP_PORT-5987}"
+    working_dir: /app
+    volumes:
+      - .:/app:cached
+      - node_modules:/app/node_modules
+    depends_on:
+      - mongo
+    restart: on-failure
+    entrypoint: node_modules/.bin/gulp
+    environment:
+      NODE_ENV: development
+      MONGO_DSN: ${MONGO_DSN-mongodb://mongo:27017/wordpress}
+      PORT: ${WORDPRESS_HTTP_PORT-5987}
+  mongo:
+    image: mongo:3.6
+    command: --quiet
+    volumes:
+      - mongodb:/data/db
+    ports:
+      - "${WORDPRESS_DB_PORT-5988}:27017"
+volumes:
+  node_modules: {}
+  mongodb: {}

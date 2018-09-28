@@ -1,0 +1,18 @@
+{
+  "name": "wordpress-graphql",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "envalid": "^4.1.4",
+    "express": "^4.16.3",
+    "node-fetch": "^2.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "gulp": "^3.9.1"
+  }
+}
