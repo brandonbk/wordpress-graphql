@@ -4,10 +4,28 @@
   "main": "src/index.js",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "terminal": "docker exec -it wordpress-graphql_app_1 /bin/bash",
+    "prestart": "$npm_package_docker_dev_install",
+    "start": "$npm_package_docker_dev_up",
+    "stop": "$npm_package_docker_dev_down",
+    "lint": "$npm_package_docker_dev_lint",
+    "lint:run": "eslint src"
+  },
+  "docker": {
+    "dev": {
+      "install": "docker-compose -p wordpress-graphql run --no-deps --entrypoint yarn app",
+      "up": "docker-compose -p wordpress-graphql up",
+      "down": "docker-compose -p wordpress-graphql down",
+      "lint": "docker-compose -p wordpress-graphql run --entrypoint yarn test run lint:run"
+    }
+  },
   "dependencies": {
     "envalid": "^4.1.4",
     "express": "^4.16.3",
-    "node-fetch": "^2.2.0"
+    "node-fetch": "^2.2.0",
+    "validator": "^10.8.0",
+    "wpapi": "^1.1.2"
   },
   "devDependencies": {
     "eslint": "^5.3.0",
